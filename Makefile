@@ -8,7 +8,10 @@ saved-model:
 	python3 saved-model.py
 
 tflite-model-from-saved-model: saved-model
-	tflite_convert --saved_model_dir=./adder-saved-model --output_file=adder-tflite.tflite
+	tflite_convert --saved_model_dir=./adder-saved-model --output_file=adder-tflite-from-saved-model.tflite
+
+tflite-model:
+	python3 tflite-model.py
 
 test-saved-model:
 	clang++ test-saved-model.cpp -I /usr/local/lib/python3.10/dist-packages/tensorflow/include -ltensorflow -L /tmp/tensorflow/lib -O3 -o test-saved-model
